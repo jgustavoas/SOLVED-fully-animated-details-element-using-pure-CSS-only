@@ -1,0 +1,84 @@
+<html>
+  <style>
+    body {
+      font-family: "Open Sans", sans-serif;
+    }
+
+    details {
+      max-width: 500px;
+      overflow: hidden;
+    }
+
+    summary {
+      display: block;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    span {
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding-left: 1rem;
+      background: #444;
+      color: #fff;
+      height: 4rem;
+    }
+
+    span:hover {
+      cursor: pointer;
+    }
+
+    span::before {
+      content: "►";
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      margin-right: 0.5rem;
+      transition: rotate 200ms 400ms ease-out;
+    }
+
+    div.content {
+      box-sizing: border-box;
+      max-width: 500px;
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 10px;
+      border: 2px solid transparent;
+      transition: max-height 400ms ease-out, border 0ms 400ms linear;
+    }
+
+    details[open] + div.content {
+      max-height: 800px; /* Set a max-height value enough to show all the content */
+      border-color: #888;
+      transition: max-height 400ms ease-out, border 0ms linear;
+    }
+
+    details[open] span::before {
+      rotate: 90deg;
+      transition: rotate 200ms ease-out;
+    }
+  </style>
+</html>
+<body>
+  <details>
+    <summary>
+      <span>Click to open and close smoothly with pure CSS</span>
+    </summary>
+  </details>
+  <div class="content">
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi unde, ex rem voluptates autem
+      aliquid veniam quis temporibus repudiandae illo, nostrum, pariatur quae! At animi modi dignissimos
+      corrupti placeat voluptatum!
+    </p>
+    <img src="https://media.tenor.com/L8wJy79nmH8AAAAC/baby-yoda-wee.gif" width="400px" alt="" />
+    <p>
+      Facilis ducimus iure officia quos possimus quaerat iusto, quas, laboriosam sapiente autem ab
+      assumenda eligendi voluptatum nisi eius cumque, tempore reprehenderit optio placeat praesentium
+      non sint repellendus consequuntur? Nihil, soluta.
+    </p>
+  </div>
+</body>
