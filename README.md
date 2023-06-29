@@ -33,7 +33,7 @@ In this post, I used the same design as the original to compare the changes in t
 ### Safari browser
 Safari has limited support for `<summary>` element¹ and `::marker` pseudo-element². In the former, `display: flex` does not work, and you need to use `summary::-webkit-details-marker { display: none }` to remove the default triangle icon³. As for the latter, that browser's support is limited to color and font-size, that is to say no animation. 😒
 
-The issue affecting the `::marker` also applies to `::before` and `::after` pseudo-elements. So, we won't see the decorative triangle icon rotating smoothly in Safari, just an abrupt rotation⁴. 👎
+The issue regarding `::marker` also applies to `::before` and `::after` pseudo-elements. So, we won't see the decorative triangle icon rotating smoothly in Safari, just an abrupt rotation⁴. 👎
 
 Worse, for some reason I couldn't figure out, the original trick using `<label>` and `<input type="checkbox">` does not change `<details>` element's height. I then had to discard it and invent a new one. 😞
 
@@ -60,7 +60,7 @@ I've got that, and after some trials, I found a solution, which consists of thes
 
 2. Discarding `<input type="checkbox">` and `<label>` elements because `<details>` itself will trigger the animation. 🤩
 
-3. Placing `<div>` with the detailed content **outside** `<details>` element, becoming its sibling instead of its descendant (this is the new trick). 🤔
+3. Placing `<div>` with the detailed content outside `<details>` element, becoming its sibling instead of its descendant (this is the new trick). 🤔
 
 
 ## <a id="html"></a>The HTML 
@@ -187,7 +187,9 @@ details[open] span::before {
 ## <a id="conclusion"></a>Final words
 In case you haven't noticed yet, this solution does not actually animate the height of `<details>` element. Indeed, it uses the open/closed state of that element to control the animation of the height of an adjacent `<div>` which holds the detailed content. 
 
-Thus, the title *“How to fully animate the `<details>` element…”* is not accurate here because the detailed content is no longer part of that element.
+Thus, the title *“How to fully animate the `<details>` element…”* is not accurate here because the detailed content is no longer a child of that element.
+
+However, I think the benefits overcome this detail (pun not intended). The user can interact with the design seamlessly. And the developer gets a nice and clean code, rid of working issues, despite the limitations of some browsers.
 
 Thank you for reading!
 
@@ -204,4 +206,3 @@ Thank you for reading!
 
 5. [https://caniuse.com/css-has](https://caniuse.com/css-has)
 
----
