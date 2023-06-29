@@ -109,7 +109,7 @@ details {
 ```css
 details {
 	max-width: 500px;
-	overflow: hidden;
+	overflow: hidden; /* Keep this line to prevent an odd blue outline around the element in Safari. */
 }
 ```
 
